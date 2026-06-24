@@ -17,7 +17,7 @@ select
         then o.net_amount else 0 end)  as lifetime_value, 
     min(o.order_date)                 as first_order_date, 
     max(o.order_date)                 as last_order_date 
-from {{ ref('stg_customers') }} c 
+from {{ ref('stg_customers_ecomm') }} c 
 left join {{ ref('stg_orders_ecomm') }} o 
     on c.customer_id = o.customer_id 
 group by 1,2,3,4,5,6,7 
