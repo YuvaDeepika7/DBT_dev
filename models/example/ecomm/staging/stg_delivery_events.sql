@@ -3,7 +3,7 @@
 
 select
     event_id,
-    shipement_id,
+    shipment_id,
     event_type,
     event_time,
     location,
