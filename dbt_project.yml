@@ -57,3 +57,11 @@ seeds:
         state: varchar(50)
         region: varchar(50)
         zone : varchar(10)
+    branch_master:
+      +column_types:
+        branch_code: varchar(50)
+        branch_name: varchar(50)
+        city : varchar(50)
+        state : varchar(50)
+        zone : varchar(10)
+        tier : number(10)

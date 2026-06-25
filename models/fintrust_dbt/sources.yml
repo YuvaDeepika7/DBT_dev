@@ -1,13 +1,8 @@
 version: 2
 
+
 sources:
 
-  - name: customers
-    database: fintrust_raw
-    schema: customers
-    tables:
-      - name: customers
-      - name: kyc_details
 
   - name: accounts
     database: fintrust_raw
@@ -15,12 +10,14 @@ sources:
     tables:
       - name: accounts
 
-  - name: transactions
-    database: fintrust_raw
-    schema: transactions
-    tables:
-      - name: transactions
 
+  - name: customers_1
+    database: fintrust_raw
+    schema: customers
+    tables:
+      - name: customers
+      - name: kyc_details
+    
   - name: loans
     database: fintrust_raw
     schema: loans
@@ -28,10 +25,16 @@ sources:
       - name: loans
       - name: loan_payments
 
-  - name: support
+
+  - name: support_1
     database: fintrust_raw
     schema: support
     tables:
       - name: support_tickets
 
 
+  - name: transactions
+    database: fintrust_raw
+    schema: transactions
+    tables:
+      - name: transactions
