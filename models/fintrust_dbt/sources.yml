@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+
+  - name: customers
+    database: fintrust_raw
+    schema: customers
+    tables:
+      - name: customers
+      - name: kyc_details
+
+  - name: accounts
+    database: fintrust_raw
+    schema: accounts
+    tables:
+      - name: accounts
+
+  - name: transactions
+    database: fintrust_raw
+    schema: transactions
+    tables:
+      - name: transactions
+
+  - name: loans
+    database: fintrust_raw
+    schema: loans
+    tables:
+      - name: loans
+      - name: loan_payments
+
+  - name: support
+    database: fintrust_raw
+    schema: support
+    tables:
+      - name: support_tickets
+
+
