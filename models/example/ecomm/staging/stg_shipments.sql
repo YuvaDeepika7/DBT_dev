@@ -12,8 +12,5 @@ select
     status, 
     datediff('day', shipped_date, 
     coalesce(delivered_date, current_date)) as transit_days, 
-    case 
-        when delivered_date > expected_date then TRUE 
-        else FALSE 
-    end  as is_delayed
+    delivered_date > expected_date as is_delayed
 from {{ source('logistics', 'shipments') }} 

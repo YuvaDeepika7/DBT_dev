@@ -8,9 +8,9 @@ select
     brand, 
     price, 
     cost_price, 
+    is_active, 
+    launched_at,
     price - cost_price                as gross_margin, 
     round((price - cost_price) 
-          / nullif(price,0) * 100, 2)  as margin_pct, 
-    is_active, 
-    launched_at 
+          / nullif(price,0) * 100, 2)  as margin_pct
 from {{ source('products', 'products') }}

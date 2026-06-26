@@ -8,4 +8,4 @@ select
     state,
     capacity,
     is_active
-from {{source('inventory','warehouses')}}
+from {{ source('inventory','warehouses') }}
