@@ -9,6 +9,6 @@ select
     avg(dc.lifetime_value)          as avg_ltv,
     avg(dc.total_orders)            as avg_orders_per_customer,
     avg(dc.days_since_last_order)   as avg_days_since_order
-from {{ ref('dim_customers') }} dc
+from {{ ref('dim_customers') }} as dc
 group by 1, 2
-order by total_revenue desc
+order by 4 desc

@@ -13,5 +13,5 @@ else 'low'
 end as order_tier
 
 
-from {{ref('stg_orders')}}
+from {{ ref('stg_orders') }}
 where status!='returned'
