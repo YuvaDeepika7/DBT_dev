@@ -19,10 +19,10 @@ select
     i.last_updated, 
     current_timestamp                   as snapshot_at 
 from {{ ref('stg_inventory') }} as i 
-INNER JOIN {{ ref('stg_warehouses') }} as w 
-    ON i.warehouse_id = w.warehouse_id 
-INNER JOIN {{ ref('stg_products') }} as p 
-    ON i.product_id = p.product_id 
+inner join {{ ref('stg_warehouses') }} as w 
+    on i.warehouse_id = w.warehouse_id 
+inner join {{ ref('stg_products') }} as p 
+    on i.product_id = p.product_id 
 
 
 {% if is_incremental() %} 
