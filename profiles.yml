@@ -1,0 +1,15 @@
+default: 
+  outputs: 
+    dev: 
+      type: snowflake 
+      account: PHCOHTC-VO33839 
+      user: YuvaDeepika7 
+      password: Yuvadeepu@7098 
+      role: DBT_ROLE 
+      database: FINTRUST_ANALYTICS 
+      warehouse: COMPUTE_WH 
+      schema: STAGING 
+      threads: 4 
+  target: dev 
+
+ 
