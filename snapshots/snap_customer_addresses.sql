@@ -12,6 +12,6 @@ check_cols = ['street','city','state','pincode','is_default']
 
 }}
 select address_id, customer_id, address_type, street, city,state,pincode, is_default
-from  {{source('customers','customer_addresses')}}
+from  {{ source('customers','customer_addresses') }}
 
 {% endsnapshot %}
