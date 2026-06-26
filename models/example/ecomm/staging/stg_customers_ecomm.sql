@@ -13,7 +13,7 @@ select
     signup_date, 
     is_active, 
     updated_at,
-    lower(email) as email,
+    lower(email) as email_address,
     first_name || ' ' || last_name   as full_name
 from {{ source('customers', 'customers') }} 
 where customer_id is not null 
