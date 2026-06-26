@@ -10,8 +10,8 @@ select a.account_id,
     cf.state, 
     cf.is_active, 
     cf.kyc_status, 
-    cf.risk_flag, 
-    cf.annual_income, 
+    --cf.risk_flag, 
+    --cf.annual_income, 
     cf.total_accounts, 
     cf.total_balance, 
     cf.has_fixed_deposit, 
@@ -30,4 +30,4 @@ left join {{ ref('stg_accounts') }} as a
     on cf.customer_id = a.customer_id    and a.status = 'active' 
 left join {{ ref('branch_master') }} as  b 
     on a.branch_code = b.branch_code 
-group by 1,2,3,4,5,6,7,8,9,10,11,12,13,14,17,18 
+group by 1,2,3,4,5,6,7,8,9,10,11,12,13,14
