@@ -15,7 +15,7 @@ select
         / nullif(count(cc.click_id),0) * 100, 2) as conversion_rate, 
     round(c.spend / nullif( 
         count(case when cc.converted then 1 end),0),2) as cost_per_conversion 
-from {{ ref('stg_campaigns') }} c 
-left join {{ ref('stg_campaign_clicks') }} cc 
+from {{ ref('stg_campaigns') }} as c 
+left join {{ ref('stg_campaign_clicks') }} as cc 
     on c.campaign_id = cc.campaign_id 
 group by 1,2,3,4,5,6,7 

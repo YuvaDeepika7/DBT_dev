@@ -16,11 +16,8 @@ select
         when o.net_amount >= 2000 then 'medium' 
         else 'low' 
     end                               as order_tier, 
-    case 
-        when o.status = 'completed'   then TRUE 
-        else FALSE 
-    end                               as is_completed 
-from {{ ref('stg_orders_ecomm') }} o 
-left join {{ ref('stg_order_items') }} oi 
+   o.status = 'completed'   as is_completed  
+from {{ ref('stg_orders_ecomm') }} as o 
+left join {{ ref('stg_order_items') }} as oi 
     on o.order_id = oi.order_id 
 group by 1,2,3,4,5,6,7 
