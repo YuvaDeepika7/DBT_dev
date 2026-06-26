@@ -1,0 +1,94 @@
+version: 2 
+
+models: 
+  - name: stg_customers_fintrust 
+    description: > 
+      Cleaned customer records from FINTRUST_RAW.CUSTOMERS.customers. 
+      One row per customer. Adds full_name and age derived columns. 
+    columns: 
+      - name: customer_id 
+        description: 'Primary key. Unique customer identifier.' 
+        tests: 
+          - not_null 
+          - unique 
+      - name: full_name 
+        description: 'Derived. Concatenation of first_name and last_name.' 
+      - name: age 
+        description: 'Derived. Customer age in years calculated from date_of_birth.' 
+      - name: email 
+        description: 'Customer email address. Lowercased.' 
+        tests: 
+          - not_null 
+      - name: customer_segment 
+        description: 'Customer segment — premium or standard.' 
+        tests: 
+          - accepted_values: 
+              arguments: 
+                values: ['premium', 'standard'] 
+      - name: is_active 
+        description: 'TRUE if the customer account is currently active.'
+
+  - name: stg_accounts 
+    description: > 
+      Cleaned account records. One row per account. 
+      Adds is_interest_bearing derived column. 
+    columns: 
+      - name: account_id 
+        description: 'Primary key. Unique account identifier.' 
+        tests: 
+          - not_null 
+          - unique 
+
+      - name: account_type 
+        description: 'Type of bank account.' 
+        tests: 
+          - accepted_values: 
+              arguments: 
+                values: ['savings', 'current', 'fixed_deposit'] 
+
+      - name: customer_id 
+        description: 'Foreign key to stg_customers.' 
+        tests: 
+          - not_null 
+          - relationships: 
+              arguments: 
+                to: "ref('stg_customers_fintrust')" 
+                field: customer_id 
+
+  - name: stg_loans 
+    description: > 
+      Cleaned loan records. One row per loan. 
+      Adds loan_age_months and is_overdue derived columns. 
+    columns: 
+      - name: loan_id 
+        description: 'Primary key. Unique loan identifier.' 
+        tests: 
+          - not_null 
+          - unique 
+
+      - name: status 
+        description: 'Current loan status.' 
+        tests: 
+          - accepted_values: 
+              arguments: 
+                values: ['active', 'overdue', 'closed', 'restructured'] 
+
+  - name: stg_transactions 
+    description: > 
+      Cleaned transaction records. One row per transaction. 
+      Adds is_credit and is_debit boolean columns. 
+    columns: 
+      - name: transaction_id 
+        description: 'Primary key. Unique transaction identifier.' 
+        tests: 
+          - not_null 
+          - unique 
+
+      - name: account_id 
+        description: 'Foreign key to stg_accounts.' 
+        tests: 
+          - not_null 
+          - relationships: 
+              arguments: 
+                to: "ref('stg_accounts')" 
+                field: account_id 
