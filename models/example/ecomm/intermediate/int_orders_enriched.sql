@@ -16,7 +16,7 @@ select
         when o.net_amount >= 2000 then 'medium' 
         else 'low' 
     end                               as order_tier, 
-   o.status = 'completed'   as is_completed  
+   coalesce(o.status = 'completed',false)   as is_completed  
 from {{ ref('stg_orders_ecomm') }} as o 
 left join {{ ref('stg_order_items') }} as oi 
     on o.order_id = oi.order_id 
