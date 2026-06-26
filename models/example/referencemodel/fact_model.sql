@@ -7,7 +7,6 @@ c.first_name,
 c.last_name,
 c.email,
 count(o.order_id) as total_orders,
-sum(o.amount) as total_spent,
 sum(case when o.order_tier = 'high'
 then 1 else 0 end) as high_value_orders,
 min(o.order_date) as first_order_date,
