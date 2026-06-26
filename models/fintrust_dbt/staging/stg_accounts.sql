@@ -1,5 +1,7 @@
 {{ config(materialized='view') }} 
 
+
+
 select 
     account_id, 
     customer_id, 
@@ -12,8 +14,5 @@ select
     current_balance, 
     interest_rate,
     updated_at,
-    CASE 
-    WHEN interest_rate > 0 THEN TRUE
-    ELSE FALSE
-  END AS is_interest_bearing,
-from {{ source('accounts', 'accounts') }} 
+   coalesce(interest_rate > 0, false) as is_interest_bearing
+ from {{ source('accounts', 'accounts') }} 
