@@ -5,7 +5,7 @@ select
     campaign_id, 
     customer_id, 
     clicked_at, 
-    hour(clicked_at) as click_hour, 
     device_type, 
-    converted 
+    converted,
+    hour(clicked_at) as click_hour
 from {{ source('marketing', 'campaign_clicks') }}
