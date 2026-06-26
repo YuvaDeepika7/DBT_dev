@@ -20,6 +20,5 @@ select
         when co.lifetime_value >= 2000   then 'silver' 
         else                             'bronze' 
     end                                  as customer_tier, 
-    datediff('day', co.last_order_date, 
-        current_date)                    as days_since_last_order 
-from {{ ref('int_customer_orders') }} co 
+    datediff('day', co.last_order_date, current_date())  as days_since_last_order 
+from {{ ref('int_customer_orders') }} as co 

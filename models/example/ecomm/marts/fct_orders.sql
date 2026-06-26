@@ -24,10 +24,10 @@ select
     t.ticket_id, 
     t.ticket_type, 
     t.is_sla_breached 
-from {{ ref('int_orders_enriched') }} oe 
-left join {{ ref('stg_payments') }} p 
+from {{ ref('int_orders_enriched') }} as oe 
+left join {{ ref('stg_payments') }} as p 
     on oe.order_id = p.order_id 
-left join {{ ref('stg_shipments') }} s 
+left join {{ ref('stg_shipments') }} as s 
     on oe.order_id = s.order_id 
-left join {{ ref('stg_support_tickets') }} t 
+left join {{ ref('stg_support_tickets') }} as t 
     on oe.order_id = t.order_id 
