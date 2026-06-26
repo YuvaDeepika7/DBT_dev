@@ -11,8 +11,8 @@ select
     total_amount, 
     discount_amount, 
     shipping_amount, 
-    total_amount - discount_amount    as net_amount, 
     created_at, 
-    updated_at 
+    updated_at,
+    total_amount - discount_amount    as net_amount
 from {{ source('orders', 'orders') }} 
 where order_id is not null 

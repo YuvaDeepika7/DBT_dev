@@ -7,4 +7,4 @@ select
     status,
     changed_at,
     changed_by
-    from {{source('orders','order_status_history')}}
+    from {{ source('orders','order_status_history') }}
