@@ -37,7 +37,7 @@ models:
               arguments:
                 values: ['Active', 'Closed', 'Written Off']
 
-  - name: stg_payments
+  - name: stg_payments_finance
     columns:
       - name: payment_id
         tests:
