@@ -18,5 +18,5 @@ select
     p.amount_paid,
     p.days_past_due,
     p.is_npa
-from payments p
-join loans l on p.loan_id = l.loan_id
+from payments as p
+inner join loans as l on p.loan_id = l.loan_id
